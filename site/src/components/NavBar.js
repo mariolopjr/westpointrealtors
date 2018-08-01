@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 const NavBar = ({ siteTitle }) => (
-  <nav class="navbar">
-    <div class="navbar-brand">
+  <nav className="navbar">
+    <div className="navbar-brand">
       <Link
         to="/"
         className="navbar-item"
@@ -11,16 +11,16 @@ const NavBar = ({ siteTitle }) => (
         {siteTitle}
       </Link>
 
-      <div class="navbar-burger burger"
+      <div className="navbar-burger burger"
         data-target="main-nav"
-        onclick="document.querySelector('#main-nav').classList.toggle('is-active');document.querySelector('.navbar-burger.burger').classList.toggle('is-active');">
+        onClick="document.querySelector('#main-nav').classList.toggle('is-active');document.querySelector('.navbar-burger.burger').classList.toggle('is-active');">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </div>
-    <div id="main-nav" class="navbar-menu">
-      <div class="navbar-start">
+    <div id="main-nav" className="navbar-menu">
+      <div className="navbar-start">
         <Link
           to="/"
           className="navbar-item"

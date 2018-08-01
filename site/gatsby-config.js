@@ -7,6 +7,7 @@ module.exports = {
     address2: 'Beverly Hills, Florida',
     contactNum1: '(352) 462-0414',
     contactNum2: '1 (800) 418-4261',
+    admin: 'https://admin.westpointrealtors.com'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
