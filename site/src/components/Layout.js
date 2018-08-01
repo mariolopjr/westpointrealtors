@@ -14,6 +14,14 @@ const Layout = ({ children, data }) => (
         site {
           siteMetadata {
             title
+            subtitle
+            email
+            address1
+            address2
+            contactNum1
+            contactNum2
+            email
+            admin
           }
         }
       }
@@ -33,10 +41,10 @@ const Layout = ({ children, data }) => (
           <Footer
             siteTitle={data.site.siteMetadata.title}
             siteSubtitle={data.site.siteMetadata.subtitle}
-            siteAddress1={data.site.siteMetadata.Address1}
-            siteAddress2={data.site.siteMetadata.Address2}
-            siteContactNum1={data.site.siteMetadata.ContactNum1}
-            siteContactNum2={data.site.siteMetadata.ContactNum2}
+            siteAddress1={data.site.siteMetadata.address1}
+            siteAddress2={data.site.siteMetadata.address2}
+            siteContactNum1={data.site.siteMetadata.contactNum1}
+            siteContactNum2={data.site.siteMetadata.contactNum2}
             siteEmail={data.site.siteMetadata.email}
             siteAdmin={data.site.siteMetadata.admin}
           />

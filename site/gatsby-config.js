@@ -7,7 +7,8 @@ module.exports = {
     address2: 'Beverly Hills, Florida',
     contactNum1: '(352) 462-0414',
     contactNum2: '1 (800) 418-4261',
-    admin: 'https://admin.westpointrealtors.com'
+    admin: 'https://admin.westpointrealtors.com',
+    api: 'http://localhost:1337',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -19,7 +20,7 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: `http://localhost:1337`,
-        contentTypes: [`property`, `type`, `status`],
+        contentTypes: [`affiliate`, `property`, `type`, `status`],
       },
     },
     {
