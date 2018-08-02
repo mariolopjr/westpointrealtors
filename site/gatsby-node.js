@@ -7,6 +7,8 @@
 // You can delete this file if you're not using it
 const path = require(`path`)
 const slugify = require(`slugify`)
+const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
+const config = require('./gatsby-config')
 
 const makeRequest = (graphql, request) => new Promise((resolve, reject) => {
   // Query for article nodes to use in creating pages.
@@ -22,7 +24,7 @@ const makeRequest = (graphql, request) => new Promise((resolve, reject) => {
 })
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
+  const { createPage } = actions
 
   const getProperties = makeRequest(graphql, `
     {
@@ -54,8 +56,8 @@ exports.createPages = ({ graphql, actions }) => {
   ])
 }
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+exports.onCreateNode = async ({ node, actions, store, cache }) => {
+  const { createNode, createNodeField } = actions
 
   if ( node.internal.type === 'StrapiProperty' ) {
     createNodeField({
@@ -63,6 +65,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: 'slug',
       value: `/${slugify(node.address, { lower: true })}`,
     })
+
     createNodeField({
       node,
       name: 'seo_description',
@@ -74,5 +77,25 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
         `${node.home_size} sqft ${node.type.name} located ` +
         `at ${node.address} built in ${new Date(node.year).getUTCFullYear()}.`,
     })
+
+    for ( const picture of node.pictures ) {
+      createNodeField({
+        node,
+        name: 'test',
+        value: config.siteMetadata.api + picture.url,
+      })
+
+      const fileNode = await createRemoteFileNode({
+        url: config.siteMetadata.api + picture.url,
+        store,
+        cache,
+        createNode,
+        createNodeId: id => `image-sharp-${id}`,
+      })
+
+      if (fileNode) {
+        node.images___NODE = fileNode.id
+      }
+    }
   }
 }
