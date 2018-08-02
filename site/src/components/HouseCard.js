@@ -19,7 +19,7 @@ const HouseCard = ({
           <figure className="image is-3by2">
             <img
               src={cover}
-              alt="House image"
+              alt="Main"
             />
           </figure>
         </div>

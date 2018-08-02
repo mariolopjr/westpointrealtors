@@ -63,5 +63,16 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: 'slug',
       value: `/${slugify(node.address, { lower: true })}`,
     })
+    createNodeField({
+      node,
+      name: 'seo_description',
+      value:
+        `This home has ${node.pictures.length}` +
+        ' photos of this ' +
+        `${Number(Math.round(node.price + 'e2') + 'e-2').toFixed(2)} ` +
+        `${node.bedrooms} bed, ${node.bathrooms} bath, ` +
+        `${node.home_size} sqft ${node.type.name} located ` +
+        `at ${node.address} built in ${new Date(node.year).getUTCFullYear()}.`,
+    })
   }
 }

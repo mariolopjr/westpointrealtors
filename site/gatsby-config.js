@@ -1,14 +1,15 @@
 module.exports = {
   siteMetadata: {
     title: 'West Point Real Estate',
+    siteUrl: 'https://localhost:8000',
+    admin: 'https://admin.westpointrealtors.com',
+    api: 'http://localhost:1337',
     subtitle: 'A Real Estate Brokerage',
     email: 'westpointagents@gmail.com',
     address1: '8 Beverly Hills Boulevard',
     address2: 'Beverly Hills, Florida',
     contactNum1: '(352) 462-0414',
     contactNum2: '1 (800) 418-4261',
-    admin: 'https://admin.westpointrealtors.com',
-    api: 'http://localhost:1337',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

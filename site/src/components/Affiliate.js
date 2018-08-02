@@ -1,8 +1,11 @@
 import React from 'react'
 
-const Affiliate = ({ url }) => (
+const Affiliate = ({ url, name }) => (
   <div className="column">
-    <img src={url}/>
+    <img
+      src={url}
+      alt={name}
+    />
   </div>
 )
 

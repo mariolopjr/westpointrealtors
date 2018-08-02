@@ -87,8 +87,8 @@ export const pageQuery = graphql`
       edges {
         node {
           id
+          name
           logo {
-            name
             url
           }
         }
