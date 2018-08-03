@@ -1,0 +1,71 @@
+{
+  "connection": "default",
+  "collectionName": "property",
+  "info": {
+    "name": "property",
+    "description": "All listed properties"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "pictures": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "description": {
+      "type": "text"
+    },
+    "home_size": {
+      "type": "float"
+    },
+    "lot_size": {
+      "type": "float"
+    },
+    "bedrooms": {
+      "type": "decimal"
+    },
+    "bathrooms": {
+      "type": "decimal"
+    },
+    "garages": {
+      "type": "decimal"
+    },
+    "year": {
+      "type": "date"
+    },
+    "hoa_fees": {
+      "type": "decimal"
+    },
+    "rental": {
+      "type": "boolean"
+    },
+    "favorite": {
+      "type": "boolean"
+    },
+    "active": {
+      "default": true,
+      "type": "boolean"
+    },
+    "type": {
+      "model": "type",
+      "via": "properties"
+    },
+    "status": {
+      "model": "status",
+      "via": "properties"
+    }
+  }
+}

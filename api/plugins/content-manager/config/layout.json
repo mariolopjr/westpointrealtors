@@ -1,0 +1,103 @@
+{
+  "property": {
+    "attributes": {
+      "Title": {
+        "appearance": ""
+      },
+      "address": {
+        "appearance": ""
+      },
+      "price": {
+        "appearance": ""
+      },
+      "description": {
+        "appearance": ""
+      },
+      "home_size": {
+        "appearance": ""
+      },
+      "lot_size": {
+        "appearance": ""
+      },
+      "bedrooms": {
+        "appearance": ""
+      },
+      "bathrooms": {
+        "appearance": ""
+      },
+      "garages": {
+        "appearance": ""
+      },
+      "year": {
+        "appearance": ""
+      },
+      "hoa_fees": {
+        "appearance": ""
+      },
+      "rental": {
+        "appearance": ""
+      },
+      "favorite": {
+        "appearance": ""
+      },
+      "active": {
+        "appearance": ""
+      }
+    }
+  },
+  "type": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "status": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "affiliate": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      },
+      "order": {
+        "appearance": ""
+      }
+    }
+  },
+  "formCategory": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "testCat": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  },
+  "category": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      },
+      "order": {
+        "appearance": ""
+      }
+    }
+  },
+  "form": {
+    "attributes": {
+      "name": {
+        "appearance": ""
+      }
+    }
+  }
+}

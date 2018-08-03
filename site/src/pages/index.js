@@ -61,7 +61,13 @@ const IndexPage = ({ data }) => (
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allStrapiProperty {
+    allStrapiProperty(
+      filter: {
+        favorite: {
+          eq: true
+        }
+      }
+    ) {
       edges {
         node {
           id

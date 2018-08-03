@@ -6,12 +6,12 @@ import HouseCard from '../components/HouseCard'
 
 const PropertiesPage = ({ data }) => (
   <Layout>
-    <div class="container property-list">
+    <div className="container property-list">
       {
         (() => {
           if (data.allStrapiProperty.edges.length > 0)
             return (
-              <div class="columns">
+              <div className="columns">
               {data.allStrapiProperty.edges.map(document => (
                 <HouseCard
                   key={document.node.id}
@@ -30,7 +30,7 @@ const PropertiesPage = ({ data }) => (
             )
           else
             return (
-              <div class="no-properties-list is-uppercase has-text-centered">
+              <div className="no-properties-list is-uppercase has-text-centered">
                 <h1>No properties available</h1>
               </div>
             )

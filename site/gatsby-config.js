@@ -21,7 +21,7 @@ module.exports = {
       resolve: `gatsby-source-strapi`,
       options: {
         apiURL: `http://localhost:1337`,
-        contentTypes: [`affiliate`, `property`, `type`, `status`],
+        contentTypes: [`affiliate`, `category`, `form`, `property`, `type`, `status`],
       },
     },
     {

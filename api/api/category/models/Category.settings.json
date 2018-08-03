@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "category",
+  "info": {
+    "name": "category",
+    "description": "Form categories to group similar forms together"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "forms": {
+      "collection": "form",
+      "via": "category"
+    },
+    "order": {
+      "unique": true,
+      "min": 1,
+      "type": "integer",
+      "required": true
+    }
+  }
+}

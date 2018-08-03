@@ -41,7 +41,7 @@ exports.createPages = ({ graphql, actions }) => {
     // Create pages for each article.
     result.data.allStrapiProperty.edges.forEach(({ node }) => {
       createPage({
-        path: `/${slugify(node.address, { lower: true })}`,
+        path: `/properties/${slugify(node.address, { lower: true })}`,
         component: path.resolve(`src/pages/property.js`),
         context: {
           id: node.id,
@@ -59,11 +59,11 @@ exports.createPages = ({ graphql, actions }) => {
 exports.onCreateNode = async ({ node, actions, store, cache }) => {
   const { createNode, createNodeField } = actions
 
-  if ( node.internal.type === 'StrapiProperty' ) {
+  if ( node.internal.type !== null && node.internal.type === 'StrapiProperty' ) {
     createNodeField({
       node,
       name: 'slug',
-      value: `/${slugify(node.address, { lower: true })}`,
+      value: `/properties/${slugify(node.address, { lower: true })}`,
     })
 
     createNodeField({
@@ -79,23 +79,31 @@ exports.onCreateNode = async ({ node, actions, store, cache }) => {
     })
 
     for ( const picture of node.pictures ) {
-      createNodeField({
-        node,
-        name: 'test',
-        value: config.siteMetadata.api + picture.url,
-      })
-
       const fileNode = await createRemoteFileNode({
         url: config.siteMetadata.api + picture.url,
         store,
         cache,
         createNode,
-        createNodeId: id => `image-sharp-${id}`,
+        createNodeId: id => `property-image-${node.id}`,
       })
 
       if (fileNode) {
         node.images___NODE = fileNode.id
       }
+    }
+  }
+
+  if ( node.internal.type !== null && node.internal.type === 'StrapiForm' ) {
+    const fileNode = await createRemoteFileNode({
+      url: config.siteMetadata.api + node.file.url,
+      store,
+      cache,
+      createNode,
+      createNodeId: id => `form-file-${node.id}`,
+    })
+
+    if (fileNode) {
+      node.form___NODE = fileNode.id
     }
   }
 }

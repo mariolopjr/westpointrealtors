@@ -669,36 +669,6 @@ footer.site {
   margin-right: .2rem;
 }
 
-.docs {
-  a {
-    color: #fff;
-
-    &:active,
-    &:focus,
-    &:hover {
-      color: darken(#f3f3f3, 20%) !important;
-    }
-  }
-
-  .tab-item {
-    margin: 1rem 0px;
-  }
-
-  .fsm-warning {
-    margin-bottom: 0.5rem;
-  }
-
-  .tabs li.is-active a {
-    border-bottom-color: silver;
-    color: silver;
-
-    &:hover {
-      border-bottom-color: #363636;
-      color: #363636;
-    }
-  }
-}
-
 .docs-notification {
   margin: 2rem 0;
 }
@@ -711,9 +681,26 @@ footer.site {
   }
 }
 
-/* Admin */
-.admin {
-  margin: 1rem;
+a.tag.is-info {
+  cursor: pointer;
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: darken(#209cee, 20%);
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+.container.columns.docs {
+  margin: 5rem;
+
+  .accordion {
+    *:focus {
+      outline: none;
+    }
+  }
 }
 
 /* Responsive Design */

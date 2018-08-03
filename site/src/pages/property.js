@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
+import FormField from '../components/FormField'
 
 const PropertyPage = ({ data, location }) => (
   <Layout>
@@ -128,18 +129,40 @@ const PropertyPage = ({ data, location }) => (
                   About this property
                 </p>
                 <form method="POST" action="" id="contact-form">
-                  <b-field>
-                    <b-input name="name" placeholder="Your name" required></b-input>
-                  </b-field>
-                  <b-field>
-                    <b-input name="email" type="email" placeholder="Your email" required></b-input>
-                  </b-field>
-                  <b-field>
-                    <b-input name="number" placeholder="Your contact Number" required></b-input>
-                  </b-field>
-                  <b-field>
-                    <b-input name="message" maxlength="200" type="textarea" placeholder="Hi! I am interested in the property because..."></b-input>
-                  </b-field>
+                  <FormField
+                    label=""
+                    name="name"
+                    type="text"
+                    placeholder="Your name"
+                    autocomplete="on"
+                    required={true}
+                  />
+                  <FormField
+                    label=""
+                    name="email"
+                    type="email"
+                    placeholder="Your email"
+                    autocomplete="on"
+                    required={true}
+                  />
+                  <FormField
+                    label=""
+                    name="number"
+                    type="text"
+                    placeholder="Your contact number"
+                    autocomplete="on"
+                    required={true}
+                  />
+                  <FormField
+                    classes="textarea"
+                    label=""
+                    name="message"
+                    type="textarea"
+                    placeholder="Hi! I am interested in the property because..."
+                    autocomplete="on"
+                    length="200"
+                    required={true}
+                  />
                   <div className="g-recaptcha"
                     data-sitekey="{{ env('RECAPTCHA_SITE') }}"
                     data-callback="submitContactForm"
@@ -200,6 +223,7 @@ export const pageQuery = graphql`
       garages
       home_size
       lot_size
+      hoa_fees
       year(formatString: "YYYY")
       fields {
         seo_description
