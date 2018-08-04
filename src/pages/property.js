@@ -1,6 +1,9 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import Slider from 'react-animated-slider'
+import 'react-animated-slider/build/horizontal.css'
 
 import Layout from '../components/Layout'
 import FormField from '../components/FormField'
@@ -28,14 +31,15 @@ const PropertyPage = ({ data, location }) => (
           <div className="card">
               <div className="card-image">
                 <figure className="image is-16by9">
-                  {data.strapiProperty.pictures.map( (picture, index) => (
-                    <img
-                      key={picture.id}
-                      src={data.site.siteMetadata.api + picture.url}
-                      alt={`Home`}
-                      className={index !== 0 ? 'hidden' : ''}
-                    />
-                  ))}
+                  <Slider>
+                    {data.strapiProperty.pictures.map( ({ localFile }, index) => (
+                      <Img
+                        key={localFile.id}
+                        fluid={localFile.childImageSharp.fluid}
+                        alt={`Home`}
+                      />
+                    ))}
+                  </Slider>
                   <div id="map" className="hidden"></div>
                 </figure>
                 <div className="selection-buttons has-text-centered">
@@ -206,8 +210,16 @@ export const pageQuery = graphql`
     strapiProperty(id: { eq: $id }) {
       title
       pictures {
-        id
-        url
+        localFile {
+          childImageSharp {
+            fluid(
+              maxWidth: 888,
+              quality: 80
+            ) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
+        }
       }
       price
       status {

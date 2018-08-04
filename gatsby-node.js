@@ -78,28 +78,19 @@ exports.onCreateNode = async ({ node, actions, store, cache }) => {
         `at ${node.address} built in ${new Date(node.year).getUTCFullYear()}.`,
     })
 
-    // let images = []
+    for ( const picture of node.pictures ) {
+      const fileNode = await createRemoteFileNode({
+        url: config.siteMetadata.api + picture.url,
+        store,
+        cache,
+        createNode,
+        createNodeId: id => `property-image-${picture.id}`,
+      })
 
-    // for ( const picture of node.pictures ) {
-    //   const fileNode = await createRemoteFileNode({
-    //     url: config.siteMetadata.api + picture.url,
-    //     store,
-    //     cache,
-    //     createNode,
-    //     createNodeId: id => `property-image-${picture.id}`,
-    //   })
-
-    //   if (fileNode) {
-    //     images.push(fileNode)
-    //     //node.images___NODE = fileNode.id
-    //   }
-    // }
-
-    // createNodeField({
-    //   node,
-    //   name: 'images',
-    //   value: images,
-    // })
+      if (fileNode) {
+        picture.localFile___NODE = fileNode.id
+      }
+    }
   }
 
   if ( node.internal.type !== null && node.internal.type === 'StrapiForm' ) {

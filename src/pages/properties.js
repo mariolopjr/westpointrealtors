@@ -17,7 +17,7 @@ const PropertiesPage = ({ data }) => (
                   key={document.node.id}
                   url={document.node.fields.slug}
                   title={document.node.title}
-                  cover={data.site.siteMetadata.api + document.node.pictures[0].url}
+                  cover={document.node.pictures[0].localFile}
                   price={document.node.price}
                   status={document.node.status.name}
                   address={document.node.address}
@@ -48,7 +48,16 @@ export const pageQuery = graphql`
           id
           title
           pictures {
-            url
+            localFile {
+              childImageSharp {
+                fluid(
+                  maxWidth: 318,
+                  quality: 80
+                ) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
+            }
           }
           price
           status {

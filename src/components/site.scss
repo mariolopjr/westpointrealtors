@@ -205,6 +205,11 @@ a.nav-item.is-tab {
   }
 }
 
+.card .image.is-3by2,
+.card .image.is-16by9, {
+  padding-top: 0;
+}
+
 .home-card .card > small {
   margin: 10px 10px 0;
 }
@@ -238,104 +243,6 @@ a.nav-item.is-tab {
 
   &:hover .fa-heart-o:before {
     content: '\f004';
-  }
-}
-
-/* Login */
-.login-hero {
-  background-color: #00d1b2;
-
-  .card-header {
-    box-shadow: 0 1px rgba(10, 10, 10, 0.1);
-  }
-
-  .login-btn {
-    height: 3em;
-    width: 100%;
-  }
-
-  a.nav-item {
-    color: lighten(#000, 45%) !important;
-    font-size: 0.8rem;
-    line-height: 1.5rem;
-
-    &:active,
-    &:focus,
-    &:hover {
-      color: #000 !important;
-    }
-  }
-
-  .hero-foot li {
-    font-size: 0.8rem;
-    padding: 0.5rem;
-    width: 100%;
-  }
-
-  header.nav {
-    box-shadow: none;
-  }
-
-  .title {
-    font-weight: 200;
-  }
-
-  .login-bold {
-    font-weight: 400;
-  }
-
-  .login-light {
-    font-weight: 200;
-  }
-
-  input,
-  textarea {
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-    border-bottom: 2px solid #b5b5b5;
-    text-align: center;
-    background: transparent;
-    color: #000;
-    resize: none;
-
-    &:active,
-    &:focus {
-      border-bottom: 2px solid #000;
-      outline: 0;
-    }
-
-    &:hover {
-      border-bottom: 2px solid darken(#b5b5b5, 20%);
-    }
-  }
-
-  .field:not(:last-child) {
-    margin-bottom: 1.25rem;
-  }
-
-  .switch input[type=checkbox]:checked + .check {
-    background: #00d1b2;
-  }
-
-  .switch:focus input[type=checkbox]:checked + .check {
-    -webkit-box-shadow: 0 0 0.5em transparentize(#00d1b2, 0.2);
-    box-shadow: 0 0 0.5em transparentize(#00d1b2, 0.2);
-  }
-
-  .switch:hover input[type=checkbox]:checked + .check {
-    background: transparentize(#00d1b2, 0.1);
-  }
-
-  .login-btn {
-    background-color: #00d1b2;
-    border-radius: 0;
-
-    &:active,
-    &:focus,
-    &:hover {
-      background-color: darken(#00d1b2, 3%);
-    }
   }
 }
 
@@ -473,6 +380,11 @@ a.nav-item.is-tab {
       width: 100%;
     }
   }
+}
+
+.slider {
+  max-height: 666px;
+  height: 100%;
 }
 
 .selection-buttons {

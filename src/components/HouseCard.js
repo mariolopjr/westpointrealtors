@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import Img from 'gatsby-image'
 
 const HouseCard = ({
   url,
@@ -17,8 +18,8 @@ const HouseCard = ({
       <div className="card card-equal-height">
         <div className="card-image">
           <figure className="image is-3by2">
-            <img
-              src={cover}
+            <Img
+              fluid={cover.childImageSharp.fluid}
               alt="Main"
             />
           </figure>
