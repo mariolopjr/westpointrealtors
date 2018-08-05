@@ -2,8 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import Slider from 'react-animated-slider'
-import 'react-animated-slider/build/horizontal.css'
+import Carousel from 'nuka-carousel'
 
 import Layout from '../components/Layout'
 import FormField from '../components/FormField'
@@ -31,7 +30,7 @@ const PropertyPage = ({ data, location }) => (
           <div className="card">
               <div className="card-image">
                 <figure className="image is-16by9">
-                  <Slider>
+                  <Carousel dragging={true}>
                     {data.strapiProperty.pictures.map( ({ localFile }, index) => (
                       <Img
                         key={localFile.id}
@@ -39,7 +38,7 @@ const PropertyPage = ({ data, location }) => (
                         alt={`Home`}
                       />
                     ))}
-                  </Slider>
+                  </Carousel>
                   <div id="map" className="hidden"></div>
                 </figure>
                 <div className="selection-buttons has-text-centered">

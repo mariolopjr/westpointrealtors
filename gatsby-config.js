@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'West Point Real Estate',
-    siteUrl: 'https://localhost:8000',
+    siteUrl: 'https://api.westpointrealtors.com',
     admin: 'https://admin.westpointrealtors.com',
     api: 'http://localhost:1337',
     subtitle: 'A Real Estate Brokerage',
@@ -27,7 +27,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://localhost:1337`,
+        apiURL: `https://api.westpointrealtors.com`,
         contentTypes: [`affiliate`, `category`, `form`, `property`, `type`, `status`],
       },
     },
