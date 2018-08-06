@@ -1,9 +1,17 @@
+let strapi
+if ( process.env.NODE_ENV == 'production' ) {
+  strapi = 'https://api.westpointrealtors.com'
+} else {
+  strapi = 'http://localhost:1337'
+}
+
 module.exports = {
   siteMetadata: {
     title: 'West Point Real Estate',
     siteUrl: 'https://api.westpointrealtors.com',
-    admin: 'https://admin.westpointrealtors.com',
-    api: 'http://localhost:1337',
+    admin: 'https://api.westpointrealtors.com/admin',
+    api: strapi,
+    google_maps_api_key: process.env.GMAP_KEY,
     subtitle: 'A Real Estate Brokerage',
     email: 'westpointagents@gmail.com',
     address1: '8 Beverly Hills Boulevard',
@@ -27,7 +35,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://api.westpointrealtors.com`,
+        apiURL: strapi,
         contentTypes: [`affiliate`, `category`, `form`, `property`, `type`, `status`],
       },
     },

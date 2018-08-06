@@ -3,9 +3,11 @@ import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Carousel from 'nuka-carousel'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Layout from '../components/Layout'
 import FormField from '../components/FormField'
+import MapContainer from '../components/MapContainer'
 
 const PropertyPage = ({ data, location }) => (
   <Layout>
@@ -36,17 +38,45 @@ const PropertyPage = ({ data, location }) => (
                         key={localFile.id}
                         fluid={localFile.childImageSharp.fluid}
                         alt={`Home`}
+                        onLoad={() => {window.dispatchEvent(new Event('resize'))}}
                       />
                     ))}
                   </Carousel>
-                  <div id="map" className="hidden"></div>
+                  <MapContainer
+                    googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places'
+                    loadingElement={<div style={{ height: `100%` }} />}
+                    containerElement={<div style={{ height: `400px` }} />}
+                    mapElement={<div style={{ height: `100%` }} />}
+                  />
                 </figure>
                 <div className="selection-buttons has-text-centered">
-                  <div id="picture-btn" className="image-button circle" onclick="hideMap()">
-                    <i className="fas fa-picture-o" aria-hidden="true"></i>
+                  <div
+                    id="picture-btn"
+                    className="image-button circle"
+                    onClick=
+                      {() => {
+                        document.getElementById('map').classList.add('hidden')
+                        document.getElementById('picture-btn').classList.remove('not-active')
+                        document.getElementById('map-btn').classList.add('not-active')
+                      }}
+                    >
+                    <FontAwesomeIcon icon={["fal", "images"]} />
                   </div>
-                  <div id="map-btn" className="image-button circle not-active" onclick="showMap()">
-                    <i className="fas fa-map-o" aria-hidden="true"></i>
+                  <div
+                    id="map-btn"
+                    className="image-button circle not-active"
+                    onClick=
+                      {() => {
+                        document.getElementById('map').classList.remove('hidden')
+                        document.getElementById('picture-btn').classList.add('not-active')
+                        document.getElementById('map-btn').classList.remove('not-active')
+                        //let map = window.map
+                        //let center = map.getCenter()
+                        //google.maps.event.trigger(map, 'resize')
+                        //map.setCenter(center)
+                      }}
+                  >
+                    <FontAwesomeIcon icon={["fal", "map-marked-alt"]} />
                   </div>
                 </div>
             </div>
@@ -174,7 +204,7 @@ const PropertyPage = ({ data, location }) => (
                 </form>
               </div>
               <footer className="card-footer">
-                <p className="card-footer-item" onclick="validateForm($event)">
+                <p className="card-footer-item" onClick="validateForm($event)">
                   <span>
                     Send message
                   </span>
@@ -210,6 +240,7 @@ export const pageQuery = graphql`
       title
       pictures {
         localFile {
+          id
           childImageSharp {
             fluid(
               maxWidth: 888,
@@ -245,6 +276,7 @@ export const pageQuery = graphql`
         title
         siteUrl
         api
+        google_maps_api_key
       }
     }
   }

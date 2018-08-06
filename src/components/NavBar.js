@@ -11,9 +11,17 @@ const NavBar = ({ siteTitle }) => (
         {siteTitle}
       </Link>
 
-      <div className="navbar-burger burger"
+      <div
+        className="navbar-burger burger"
         data-target="main-nav"
-        onClick="document.querySelector('#main-nav').classList.toggle('is-active');document.querySelector('.navbar-burger.burger').classList.toggle('is-active');">
+        onClick={() => {
+          document.querySelector('#main-nav')
+            .classList.toggle('is-active')
+          document.querySelector('.navbar-burger.burger')
+            .classList.toggle('is-active')
+          }
+        }
+      >
         <span></span>
         <span></span>
         <span></span>

@@ -1,9 +1,11 @@
 import React from 'react'
+import Img from 'gatsby-image'
 
 const Affiliate = ({ url, name }) => (
   <div className="column">
-    <img
-      src={url}
+    <Img
+      className="affiliate"
+      fluid={url.childImageSharp.fluid}
       alt={name}
     />
   </div>

@@ -4,7 +4,9 @@
   "version": "0.0.1",
   "author": "Mario Lopez <mario@techmunchies.net>",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.2.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.2",
+    "@fortawesome/pro-light-svg-icons": "^5.2.0",
+    "@fortawesome/react-fontawesome": "^0.1.0",
     "gatsby": "^2.0.0-beta.67",
     "gatsby-image": "^2.0.0-beta.7",
     "gatsby-link": "^2.0.0-beta.6",
@@ -27,6 +29,7 @@
     "react": "^16.4.1",
     "react-accessible-accordion": "^2.4.4",
     "react-dom": "^16.4.1",
+    "react-google-maps": "^9.4.5",
     "react-helmet": "^5.2.0",
     "slugify": "^1.3.0",
     "typeface-raleway": "^0.0.54"

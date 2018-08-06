@@ -46,7 +46,7 @@ const IndexPage = ({ data }) => (
                 <Affiliate
                   key={document.node.id}
                   name={document.node.name}
-                  url={document.node.logo.publicURL} />
+                  url={document.node.logo} />
               )) : (
                 <div className="no-properties-index is-uppercase">
                   <h1>No affiliates available</h1>
@@ -104,7 +104,14 @@ export const pageQuery = graphql`
           id
           name
           logo {
-            publicURL
+            childImageSharp {
+              fluid(
+                maxWidth: 200,
+                quality: 80
+              ) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              }
+            }
           }
         }
       }

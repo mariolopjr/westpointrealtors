@@ -6,8 +6,8 @@ const FormInput = ({ classes, name, type, placeholder, autocomplete, length, req
     name={name}
     type={type}
     placeholder={placeholder}
-    autocomplete={autocomplete}
-    maxlength={length}
+    autoComplete={autocomplete}
+    maxLength={length}
     required={required}
   />
 )

@@ -10,7 +10,6 @@ $text-shadow-color: $background-color;
 
 @import "~bulma/bulma.sass";
 @import "~typeface-raleway/index.css";
-@import "~@fortawesome/fontawesome-free/css/fontawesome.min.css";
 
 // Variables
 @import "variables";
@@ -502,7 +501,7 @@ $outside-circle-margin: ($outside-circle-size / 2) * -1;
   }
 }
 
-.affiliates img {
+.affiliates .affiliate {
   border-radius: 7px;
   width: 200px;
 }

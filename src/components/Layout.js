@@ -2,10 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faBed,
+  faShower,
+  faCar,
+  faImages,
+  faMapMarkedAlt,
+} from '@fortawesome/pro-light-svg-icons'
 
 import NavBar from './NavBar'
 import Footer from './Footer'
 import './site.scss'
+
+library.add(faBed, faShower, faCar, faImages, faMapMarkedAlt)
 
 const Layout = ({ children, data }) => (
   <StaticQuery

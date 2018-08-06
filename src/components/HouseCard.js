@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const HouseCard = ({
   url,
@@ -42,15 +43,21 @@ const HouseCard = ({
         </div>
         <footer className="card-footer">
           <div className="card-footer-item">
-            <span className="icon"><i className="fas fa-bed" aria-hidden="true"></i></span>
+            <span className="icon">
+              <FontAwesomeIcon icon={["fal", "bed"]} />
+            </span>
             <span className="house-footer">{bedrooms}</span>
           </div>
           <div className="card-footer-item">
-            <span className="icon"><i className="fas fa-shower" aria-hidden="true"></i></span>
+            <span className="icon">
+              <FontAwesomeIcon icon={["fal", "shower"]} />
+            </span>
             <span className="house-footer">{bathrooms}</span>
           </div>
           <div className="card-footer-item">
-            <span className="icon"><i className="fas fa-car" aria-hidden="true"></i></span>
+            <span className="icon">
+              <FontAwesomeIcon icon={["fal", "car"]} />
+            </span>
             <span className="house-footer">{garages}</span>
           </div>
         </footer>
