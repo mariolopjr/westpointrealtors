@@ -43,9 +43,11 @@ const PropertyPage = ({ data, location }) => (
                     ))}
                   </Carousel>
                   <MapContainer
-                    googleMapURL='https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places'
+                    isMarkerShown={true}
+                    address={data.strapiProperty.address}
+                    googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${data.site.siteMetadata.google_maps_api_key}&v=3.exp&libraries=geometry,drawing,places`}
                     loadingElement={<div style={{ height: `100%` }} />}
-                    containerElement={<div style={{ height: `400px` }} />}
+                    containerElement={<div id="map" className="hidden not-active" style={{ height: `666px` }} />}
                     mapElement={<div style={{ height: `100%` }} />}
                   />
                 </figure>
@@ -70,10 +72,6 @@ const PropertyPage = ({ data, location }) => (
                         document.getElementById('map').classList.remove('hidden')
                         document.getElementById('picture-btn').classList.add('not-active')
                         document.getElementById('map-btn').classList.remove('not-active')
-                        //let map = window.map
-                        //let center = map.getCenter()
-                        //google.maps.event.trigger(map, 'resize')
-                        //map.setCenter(center)
                       }}
                   >
                     <FontAwesomeIcon icon={["fal", "map-marked-alt"]} />
@@ -161,7 +159,7 @@ const PropertyPage = ({ data, location }) => (
                 <p className="subtitle has-text-centered">
                   About this property
                 </p>
-                <form method="POST" action="" id="contact-form">
+                <form name="contact" netlify="true">
                   <FormField
                     label=""
                     name="name"
@@ -196,15 +194,11 @@ const PropertyPage = ({ data, location }) => (
                     length="200"
                     required={true}
                   />
-                  <div className="g-recaptcha"
-                    data-sitekey="{{ env('RECAPTCHA_SITE') }}"
-                    data-callback="submitContactForm"
-                    data-size="invisible">
-                  </div>
+                  <div data-netlify-recaptcha={true} />
                 </form>
               </div>
               <footer className="card-footer">
-                <p className="card-footer-item" onClick="validateForm($event)">
+                <p className="card-footer-item">
                   <span>
                     Send message
                   </span>

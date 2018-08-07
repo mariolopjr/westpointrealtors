@@ -20,7 +20,7 @@
     "gatsby-plugin-sharp": "^2.0.0-beta.7",
     "gatsby-plugin-typography": "^2.2.0-beta.3",
     "gatsby-source-filesystem": "next",
-    "gatsby-source-strapi": "https://github.com/rezof/gatsby-source-strapi",
+    "gatsby-source-strapi": "https://github.com/mariolopjr/gatsby-source-strapi",
     "gatsby-transformer-remark": "next",
     "gatsby-transformer-sharp": "^2.1.1-beta.6",
     "node-sass": "^4.9.2",
@@ -31,6 +31,7 @@
     "react-dom": "^16.4.1",
     "react-google-maps": "^9.4.5",
     "react-helmet": "^5.2.0",
+    "react-places-autocomplete": "^7.2.0",
     "slugify": "^1.3.0",
     "typeface-raleway": "^0.0.54"
   },
