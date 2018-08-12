@@ -229,8 +229,8 @@ const PropertyPage = ({ data, location }) => (
 )
 
 export const pageQuery = graphql`
-  query PropertyQuery($id: String!) {
-    strapiProperty(id: { eq: $id }) {
+  query PropertyQuery($path: String!) {
+    strapiProperty(fields: { slug: { eq: $path } }) {
       title
       pictures {
         localFile {

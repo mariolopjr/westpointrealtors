@@ -1,17 +1,9 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
-// You can delete this file if you're not using it
 const path = require(`path`)
 const slugify = require(`slugify`)
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 const config = require('./gatsby-config')
 
 const makeRequest = (graphql, request) => new Promise((resolve, reject) => {
-  // Query for article nodes to use in creating pages.
   resolve(
     graphql(request).then(result => {
       if (result.errors) {
@@ -31,8 +23,10 @@ exports.createPages = ({ graphql, actions }) => {
       allStrapiProperty {
         edges {
           node {
-            id
             address
+            fields {
+              slug
+            }
           }
         }
       }
@@ -40,13 +34,13 @@ exports.createPages = ({ graphql, actions }) => {
     `).then(result => {
     // Create pages for each article.
     result.data.allStrapiProperty.edges.forEach(({ node }) => {
-      createPage({
-        path: `/properties/${slugify(node.address, { lower: true })}`,
-        component: path.resolve(`src/pages/property.js`),
-        context: {
-          id: node.id,
-        },
-      })
+      if ( node !== null ) {
+        createPage({
+          path: node.fields.slug,
+          component: path.resolve(`src/templates/property.js`),
+          context: {},
+        })
+      }
     })
   })
 

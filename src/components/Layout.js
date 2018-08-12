@@ -13,6 +13,9 @@ import {
 
 import NavBar from './NavBar'
 import Footer from './Footer'
+
+import 'typeface-raleway'
+import 'bulma'
 import './site.scss'
 
 library.add(faBed, faShower, faCar, faImages, faMapMarkedAlt)

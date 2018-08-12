@@ -1,14 +1,9 @@
-let strapi
-if ( process.env.NODE_ENV == 'production' ) {
-  strapi = 'https://api.westpointrealtors.com'
-} else {
-  strapi = 'http://localhost:1337'
-}
+let strapi = 'https://api.westpointrealtors.com'
 
 module.exports = {
   siteMetadata: {
     title: 'West Point Real Estate',
-    siteUrl: 'https://api.westpointrealtors.com',
+    siteUrl: 'https://westpointrealtors.com',
     admin: 'https://api.westpointrealtors.com/admin',
     api: strapi,
     google_maps_api_key: process.env.GMAP_KEY,
@@ -31,7 +26,6 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
-    'gatsby-plugin-purgecss',
     {
       resolve: `gatsby-source-strapi`,
       options: {
@@ -73,23 +67,5 @@ module.exports = {
       },
     },
     'gatsby-plugin-offline',
-    {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        headers: {
-          '/*': [
-            `Content-Security-Policy: script-src 'self' 'unsafe-inline'`,
-            `Referrer-Policy: same-origin`,
-            `Expect-CT: enforce,max-age=604800`,
-          ],
-        },
-        allPageHeaders: [],
-        mergeSecurityHeaders: true,
-        mergeLinkHeaders: true,
-        mergeCachingHeaders: true,
-        transformHeaders: (headers, path) => headers,
-        generateMatchPathRewrites: true,
-      },
-    },
   ],
 }
