@@ -53,7 +53,12 @@ exports.createPages = ({ graphql, actions }) => {
 exports.onCreateNode = async ({ node, actions, store, cache }) => {
   const { createNode, createNodeField } = actions
 
-  if ( node.internal.type !== null && node.internal.type === 'StrapiProperty' ) {
+  if (
+    node !== null
+    && node.internal !== null
+    && node.internal.type !== null
+    && node.internal.type === 'StrapiProperty'
+  ) {
     createNodeField({
       node,
       name: 'slug',
@@ -87,7 +92,12 @@ exports.onCreateNode = async ({ node, actions, store, cache }) => {
     }
   }
 
-  if ( node.internal.type !== null && node.internal.type === 'StrapiForm' ) {
+  if (
+    node !== null
+    && node.internal !== null
+    && node.internal.type !== null
+    && node.internal.type === 'StrapiForm'
+  ) {
     const fileNode = await createRemoteFileNode({
       url: config.siteMetadata.api + node.file.url,
       store,
