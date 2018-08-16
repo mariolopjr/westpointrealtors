@@ -8,6 +8,7 @@
     "@fortawesome/pro-light-svg-icons": "^5.2.0",
     "@fortawesome/react-fontawesome": "^0.1.0",
     "@mariolopjr/gatsby-source-strapi": "0.0.3-2",
+    "bulma": "^0.7.1",
     "gatsby": "^2.0.0-beta.67",
     "gatsby-image": "^2.0.0-beta.7",
     "gatsby-link": "^2.0.0-beta.6",
@@ -45,7 +46,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "bulma": "^0.7.1",
     "prettier": "^1.14.2"
   },
   "repository": {
