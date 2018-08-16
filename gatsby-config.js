@@ -27,7 +27,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
     {
-      resolve: `gatsby-source-strapi`,
+      resolve: `@mariolopjr/gatsby-source-strapi`,
       options: {
         apiURL: strapi,
         contentTypes: [`affiliate`, `category`, `form`, `property`, `type`, `status`],

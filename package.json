@@ -18,7 +18,7 @@
     "gatsby-plugin-sharp": "^2.0.0-beta.7",
     "gatsby-plugin-typography": "^2.2.0-beta.3",
     "gatsby-source-filesystem": "next",
-    "gatsby-source-strapi": "strapi/gatsby-source-strapi",
+    "@mariolopjr/gatsby-source-strapi": "^0.0.3",
     "gatsby-transformer-remark": "next",
     "gatsby-transformer-sharp": "^2.1.1-beta.6",
     "node-sass": "^4.9.2",

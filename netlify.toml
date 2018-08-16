@@ -1,6 +1,3 @@
 [build]
   publish = "public"
-  command = "cd node_modules/gatsby-source-strapi && yarn install --production=false && yarn build && cd ../../ && gatsby build"
-[build.environment]
-  YARN_VERSION = "1.9.2"
-  YARN_FLAGS = "--no-ignore-optional"
+  command = "gatsby build"
