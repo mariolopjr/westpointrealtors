@@ -9,15 +9,15 @@ const PropertiesPage = ({ data }) => (
     <div className="container property-list">
       {
         (() => {
-          if (data.allStrapiProperty.edges.length > 0)
+          if (data.allContentfulProperties.edges.length > 0)
             return (
               <div className="columns">
-              {data.allStrapiProperty.edges.map(document => (
+              {data.allContentfulProperties.edges.map(document => (
                 <HouseCard
                   key={document.node.id}
                   url={document.node.fields.slug}
                   title={document.node.title}
-                  cover={document.node.pictures[0].localFile}
+                  cover={document.node.photos[0].resolutions}
                   price={document.node.price}
                   status={document.node.status.name}
                   address={document.node.address}
@@ -42,21 +42,17 @@ const PropertiesPage = ({ data }) => (
 
 export const pageQuery = graphql`
   query PropertiesQuery {
-    allStrapiProperty {
+    allContentfulProperties {
       edges {
         node {
           id
           title
-          pictures {
-            localFile {
-              childImageSharp {
-                fluid(
-                  maxWidth: 318,
-                  quality: 80
-                ) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
-              }
+          photos {
+            resolutions(
+              width: 318
+            ) {
+              ...GatsbyContentfulResolutions_withWebp
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
           price
@@ -71,11 +67,6 @@ export const pageQuery = graphql`
             slug
           }
         }
-      }
-    }
-    site {
-      siteMetadata {
-        api
       }
     }
   }

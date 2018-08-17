@@ -38,8 +38,8 @@ const FormsPage = ({ data }) => (
 )
 
 export const pageQuery = graphql`
-  query FormsQuery {
-    allStrapiCategory(
+  {
+    allContentfulCategory(
       sort: {
         fields: order, order: ASC
       }
@@ -51,9 +51,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    allStrapiForm(
+    allContentfulForms(
       sort: {
-        fields: category___order, order: ASC
+        fields: category___NODE, order: ASC
       }
     ) {
       edges {
@@ -61,9 +61,8 @@ export const pageQuery = graphql`
           id
           name
           file {
-            id
-            ext
-            publicURL
+            contentType
+            url
           }
           category {
             name

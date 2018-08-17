@@ -20,7 +20,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   const getProperties = makeRequest(graphql, `
     {
-      allStrapiProperty {
+      allContentfulProperties {
         edges {
           node {
             address
@@ -33,7 +33,7 @@ exports.createPages = ({ graphql, actions }) => {
     }
     `).then(result => {
     // Create pages for each article.
-    result.data.allStrapiProperty.edges.forEach(({ node }) => {
+    result.data.allContentfulProperties.edges.forEach(({ node }) => {
       if ( node !== null ) {
         createPage({
           path: node.fields.slug,
@@ -57,7 +57,7 @@ exports.onCreateNode = async ({ node, actions, store, cache }) => {
     node !== null
     && node.internal !== null
     && node.internal.type !== null
-    && node.internal.type === 'StrapiProperty'
+    && node.internal.type === 'ContentfulProperties'
   ) {
     createNodeField({
       node,
@@ -65,49 +65,49 @@ exports.onCreateNode = async ({ node, actions, store, cache }) => {
       value: `/properties/${slugify(node.address, { lower: true })}`,
     })
 
-    createNodeField({
-      node,
-      name: 'seo_description',
-      value:
-        `This home has ${node.pictures.length}` +
-        ' photos of this ' +
-        `${Number(Math.round(node.price + 'e2') + 'e-2').toFixed(2)} ` +
-        `${node.bedrooms} bed, ${node.bathrooms} bath, ` +
-        `${node.home_size} sqft ${node.type.name} located ` +
-        `at ${node.address} built in ${new Date(node.year).getUTCFullYear()}.`,
-    })
+    // createNodeField({
+    //   node,
+    //   name: 'seo_description',
+    //   value:
+    //     `This home has ${node.photos.length}` +
+    //     ' photos of this ' +
+    //     `${Number(Math.round(node.price + 'e2') + 'e-2').toFixed(2)} ` +
+    //     `${node.bedrooms} bed, ${node.bathrooms} bath, ` +
+    //     `${node.home_size} sqft ${node.type.name} located ` +
+    //     `at ${node.address} built in ${new Date(node.year).getUTCFullYear()}.`,
+    // })
 
-    for ( const picture of node.pictures ) {
-      const fileNode = await createRemoteFileNode({
-        url: config.siteMetadata.api + picture.url,
-        store,
-        cache,
-        createNode,
-        createNodeId: id => `property-image-${picture.id}`,
-      })
+    // for ( const picture of node.pictures ) {
+    //   const fileNode = await createRemoteFileNode({
+    //     url: config.siteMetadata.api + picture.url,
+    //     store,
+    //     cache,
+    //     createNode,
+    //     createNodeId: id => `property-image-${picture.id}`,
+    //   })
 
-      if (fileNode) {
-        picture.localFile___NODE = fileNode.id
-      }
-    }
+    //   if (fileNode) {
+    //     picture.localFile___NODE = fileNode.id
+    //   }
+    // }
   }
 
-  if (
-    node !== null
-    && node.internal !== null
-    && node.internal.type !== null
-    && node.internal.type === 'StrapiForm'
-  ) {
-    const fileNode = await createRemoteFileNode({
-      url: config.siteMetadata.api + node.file.url,
-      store,
-      cache,
-      createNode,
-      createNodeId: id => `form-file-${node.id}`,
-    })
+  // if (
+  //   node !== null
+  //   && node.internal !== null
+  //   && node.internal.type !== null
+  //   && node.internal.type === 'StrapiForm'
+  // ) {
+  //   const fileNode = await createRemoteFileNode({
+  //     url: config.siteMetadata.api + node.file.url,
+  //     store,
+  //     cache,
+  //     createNode,
+  //     createNodeId: id => `form-file-${node.id}`,
+  //   })
 
-    if (fileNode) {
-      node.localFile___NODE = fileNode.id
-    }
-  }
+  //   if (fileNode) {
+  //     node.localFile___NODE = fileNode.id
+  //   }
+  // }
 }

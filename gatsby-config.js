@@ -1,11 +1,8 @@
-let strapi = 'https://api.westpointrealtors.com'
-
 module.exports = {
   siteMetadata: {
     title: 'West Point Real Estate',
     siteUrl: 'https://westpointrealtors.com',
     admin: 'https://api.westpointrealtors.com/admin',
-    api: strapi,
     google_maps_api_key: process.env.GMAP_KEY,
     subtitle: 'A Real Estate Brokerage',
     email: 'westpointagents@gmail.com',
@@ -27,10 +24,11 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
     {
-      resolve: `@mariolopjr/gatsby-source-strapi`,
+      resolve: 'gatsby-source-contentful',
       options: {
-        apiURL: strapi,
-        contentTypes: [`affiliate`, `category`, `form`, `property`, `type`, `status`],
+        spaceId: process.env.SPACE_ID,
+        accessToken: process.env.ACCESS_TOKEN,
+        host: process.env.SPACE_HOST,
       },
     },
     {
@@ -54,16 +52,6 @@ module.exports = {
             type: `image/png`,
           },
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: "",
-        head: false,
-        anonymize: true,
-        respectDNT: true,
-        exclude: ["/preview/**", "/admin/"],
       },
     },
     'gatsby-plugin-offline',

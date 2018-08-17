@@ -12,19 +12,19 @@ import MapContainer from '../components/MapContainer'
 const PropertyPage = ({ data, location }) => (
   <Layout>
     <Helmet
-      title={data.strapiProperty.address + " | " + data.site.siteMetadata.title}
+      title={data.contentfulProperties.address + " | " + data.site.siteMetadata.title}
       meta={[
-        { name: 'description', content: data.strapiProperty.fields.seo_description },
+        { name: 'description', content: data.contentfulProperties.fields.seo_description },
         { name: 'og:type', content: 'product' },
         { name: 'og:url', content: data.site.siteMetadata.siteUrl + location.pathname },
-        { name: 'og:title', content: data.strapiProperty.address + " | " + data.site.siteMetadata.title },
-        { name: 'og:description', content: data.strapiProperty.fields.seo_description },
+        { name: 'og:title', content: data.contentfulProperties.address + " | " + data.site.siteMetadata.title },
+        { name: 'og:description', content: data.contentfulProperties.fields.seo_description },
       ]}
     />
     <div className="container house">
       <div className="house-titles has-text-centered">
-        <h1 className="title">{data.strapiProperty.title}</h1>
-        <h2 className="subtitle">{data.strapiProperty.address}</h2>
+        <h1 className="title">{data.contentfulProperties.title}</h1>
+        <h2 className="subtitle">{data.contentfulProperties.address}</h2>
       </div>
 
       <div className="columns">
@@ -33,7 +33,7 @@ const PropertyPage = ({ data, location }) => (
               <div className="card-image">
                 <figure className="image is-16by9">
                   <Carousel dragging={true}>
-                    {data.strapiProperty.pictures.map( ({ localFile }, index) => (
+                    {data.contentfulProperties.photos.map( ({ localFile }, index) => (
                       <Img
                         key={localFile.id}
                         fluid={localFile.childImageSharp.fluid}
@@ -44,7 +44,7 @@ const PropertyPage = ({ data, location }) => (
                   </Carousel>
                   <MapContainer
                     isMarkerShown={true}
-                    address={data.strapiProperty.address}
+                    address={data.contentfulProperties.address}
                     googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${data.site.siteMetadata.google_maps_api_key}&v=3.exp&libraries=geometry,drawing,places`}
                     loadingElement={<div style={{ height: `100%` }} />}
                     containerElement={<div id="map" className="hidden not-active" style={{ height: `666px` }} />}
@@ -81,9 +81,9 @@ const PropertyPage = ({ data, location }) => (
             <header className="card-header">
               <div className="price">
                 <span className="card-price">
-                  ${Number(Math.round(data.strapiProperty.price + 'e2') + 'e-2').toFixed(2)}
+                  ${Number(Math.round(data.contentfulProperties.price + 'e2') + 'e-2').toFixed(2)}
                 </span>
-                <span className="is-pulled-right is-uppercase house-status">{data.strapiProperty.status.name}</span>
+                <span className="is-pulled-right is-uppercase house-status">{data.contentfulProperties.status.name}</span>
               </div>
             </header>
               <div className="card-content">
@@ -92,13 +92,13 @@ const PropertyPage = ({ data, location }) => (
                     <span className="item-title">Property Type</span>
                   </div>
                   <div className="column">
-                    <span className="item-data">{data.strapiProperty.type.name}</span>
+                    <span className="item-data">{data.contentfulProperties.type.name}</span>
                   </div>
                   <div className="column">
                     <span className="item-title">Year</span>
                   </div>
                   <div className="column">
-                    <span className="item-data">{data.strapiProperty.year}</span>
+                    <span className="item-data">{data.contentfulProperties.year}</span>
                   </div>
                 </div>
                 <hr/>
@@ -107,13 +107,13 @@ const PropertyPage = ({ data, location }) => (
                     <span className="item-title">Home Size</span>
                   </div>
                   <div className="column">
-                    <span className="item-data">{data.strapiProperty.home_size}</span>
+                    <span className="item-data">{data.contentfulProperties.home_size}</span>
                   </div>
                   <div className="column">
                     <span className="item-title">Lot Size</span>
                   </div>
                   <div className="column">
-                    <span className="item-data">{data.strapiProperty.lot_size}</span>
+                    <span className="item-data">{data.contentfulProperties.lot_size}</span>
                   </div>
                 </div>
                 <hr/>
@@ -122,13 +122,13 @@ const PropertyPage = ({ data, location }) => (
                     <span className="item-title">Bedrooms</span>
                   </div>
                   <div className="column">
-                    <span className="item-data">{data.strapiProperty.bedrooms}</span>
+                    <span className="item-data">{data.contentfulProperties.bedrooms}</span>
                   </div>
                   <div className="column">
                     <span className="item-title">Bathrooms</span>
                   </div>
                   <div className="column">
-                    <span className="item-data">{data.strapiProperty.bathrooms}</span>
+                    <span className="item-data">{data.contentfulProperties.bathrooms}</span>
                   </div>
                 </div>
                 <hr/>
@@ -137,13 +137,13 @@ const PropertyPage = ({ data, location }) => (
                     <span className="item-title">Garages</span>
                   </div>
                   <div className="column">
-                    <span className="item-data">{data.strapiProperty.garages}</span>
+                    <span className="item-data">{data.contentfulProperties.garages}</span>
                   </div>
                   <div className="column">
                     <span className="item-title">HOA Fees</span>
                   </div>
                   <div className="column">
-                    <span className="item-data">${data.strapiProperty.hoa_fees}</span>
+                    <span className="item-data">${data.contentfulProperties.hoa_fees}</span>
                   </div>
                 </div>
               </div>
@@ -218,7 +218,7 @@ const PropertyPage = ({ data, location }) => (
             </header>
             <div className="card-content">
               <div className="content">
-                {data.strapiProperty.description}
+                {data.contentfulProperties.description}
               </div>
             </div>
           </div>
@@ -229,20 +229,15 @@ const PropertyPage = ({ data, location }) => (
 )
 
 export const pageQuery = graphql`
-  query PropertyQuery($path: String!) {
-    strapiProperty(fields: { slug: { eq: $path } }) {
+  query ($path: String!) {
+    contentfulProperties(fields: { slug: { eq: $path } }) {
       title
-      pictures {
-        localFile {
-          id
-          childImageSharp {
-            fluid(
-              maxWidth: 888,
-              quality: 80
-            ) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
-          }
+      photos {
+        resolutions(
+          width: 318
+        ) {
+          ...GatsbyContentfulResolutions_withWebp
+          ...GatsbyContentfulFluid_tracedSVG
         }
       }
       price
@@ -257,19 +252,18 @@ export const pageQuery = graphql`
       bedrooms
       bathrooms
       garages
-      home_size
-      lot_size
-      hoa_fees
+      homeSize
+      lotSize
+      hoaFees
       year(formatString: "YYYY")
-      fields {
-        seo_description
-      }
+      #fields {
+      #  seoDescription
+      #}
     }
     site {
       siteMetadata {
         title
         siteUrl
-        api
         google_maps_api_key
       }
     }

@@ -15,13 +15,13 @@ const IndexPage = ({ data }) => (
           </h2>
 
           <div className="columns">
-            {data.allStrapiProperty.edges.length > 0 ?
-              data.allStrapiProperty.edges.map(document => (
+            {data.allContentfulProperties.edges.length > 0 ?
+              data.allContentfulProperties.edges.map(document => (
                 <HouseCard
-                  key={document.node.id}
+                  key={document.node.sys.id}
                   url={document.node.fields.slug}
                   title={document.node.title}
-                  cover={document.node.pictures[0].localFile}
+                  cover={document.node.photos[0].resolutions}
                   price={document.node.price}
                   status={document.node.status.name}
                   address={document.node.address}
@@ -43,8 +43,8 @@ const IndexPage = ({ data }) => (
         <div className="hero-body">
           <h2 className="title">Our affiliates</h2>
           <div className="columns affiliates">
-            {data.allStrapiAffiliate.edges.length > 0 ?
-              data.allStrapiAffiliate.edges.map(document => (
+            {data.allContentfulAffiliates.edges.length > 0 ?
+              data.allContentfulAffiliates.edges.map(document => (
                 <Affiliate
                   key={document.node.id}
                   name={document.node.name}
@@ -63,7 +63,7 @@ const IndexPage = ({ data }) => (
 
 export const pageQuery = graphql`
   query IndexQuery {
-    allStrapiProperty(
+    allContentfulProperties(
       filter: {
         favorite: {
           eq: true
@@ -74,16 +74,12 @@ export const pageQuery = graphql`
         node {
           id
           title
-          pictures {
-            localFile {
-              childImageSharp {
-                fluid(
-                  maxWidth: 318,
-                  quality: 80
-                ) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
-              }
+          photos {
+            resolutions(
+              width: 318
+            ) {
+              ...GatsbyContentfulResolutions_withWebp
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
           price
@@ -100,27 +96,20 @@ export const pageQuery = graphql`
         }
       }
     }
-    allStrapiAffiliate {
+    allContentfulAffiliates {
       edges {
         node {
           id
           name
           logo {
-            childImageSharp {
-              fluid(
-                maxWidth: 200,
-                quality: 80
-              ) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
-              }
+            resolutions(
+              width: 200
+            ) {
+              ...GatsbyContentfulResolutions_withWebp
+              ...GatsbyContentfulFluid_tracedSVG
             }
           }
         }
-      }
-    }
-    site {
-      siteMetadata {
-        api
       }
     }
   }

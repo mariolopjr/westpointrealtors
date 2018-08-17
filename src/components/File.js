@@ -6,13 +6,13 @@ const File = ({ name, type, url }) => (
     <div className="control">
       <div className="tags has-addons">
         <span className="tag is-dark">{type.substring(1)}</span>
-        <Link
+        <a
           to={url}
           className="tag is-info"
           target="_blank"
         >
           {name}
-        </Link>
+        </a>
       </div>
     </div>
   </>
