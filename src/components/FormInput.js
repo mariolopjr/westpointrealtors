@@ -1,6 +1,15 @@
 import React from 'react'
 
-const FormInput = ({ classes, name, type, placeholder, autocomplete, length, required }) => (
+const FormInput = ({
+  classes,
+  name,
+  type,
+  placeholder,
+  autocomplete,
+  length,
+  required,
+  value,
+}) => (
   <input
     className={ classes ? classes : 'input' }
     name={name}
@@ -9,6 +18,7 @@ const FormInput = ({ classes, name, type, placeholder, autocomplete, length, req
     autoComplete={autocomplete}
     maxLength={length}
     required={required}
+    value={value}
   />
 )
 

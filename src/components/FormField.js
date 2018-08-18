@@ -2,9 +2,19 @@ import React from 'react'
 
 import FormInput from './FormInput'
 
-const FormField = ({ classes, label, name, type, placeholder, autocomplete, length, required }) => (
+const FormField = ({
+  classes,
+  label,
+  name,
+  type,
+  placeholder,
+  autocomplete,
+  length,
+  required,
+  value,
+}) => (
   <div className="field">
-    { label !== '' &&
+    { label &&
     <label className="label">{label}</label>}
     <div className="control">
       <FormInput
@@ -15,6 +25,7 @@ const FormField = ({ classes, label, name, type, placeholder, autocomplete, leng
         autocomplete={autocomplete}
         length={length}
         required={required}
+        value={value}
       />
     </div>
   </div>

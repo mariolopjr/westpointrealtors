@@ -159,9 +159,22 @@ const PropertyPage = ({ data, location }) => (
                 <p className="subtitle has-text-centered">
                   About this property
                 </p>
-                <form name="contact" netlify="true">
+                <form
+                  id="contact"
+                  action="/success"
+                  name="contact"
+                  method="POST"
+                  netlify-honeypot="agent-name"
+                  netlify-recaptcha="true"
+                  netlify="true"
+                >
                   <FormField
-                    label=""
+                    name="address"
+                    type="hidden"
+                    required={true}
+                    value={data.contentfulProperties.address}
+                  />
+                  <FormField
                     name="name"
                     type="text"
                     placeholder="Your name"
@@ -169,7 +182,6 @@ const PropertyPage = ({ data, location }) => (
                     required={true}
                   />
                   <FormField
-                    label=""
                     name="email"
                     type="email"
                     placeholder="Your email"
@@ -177,7 +189,6 @@ const PropertyPage = ({ data, location }) => (
                     required={true}
                   />
                   <FormField
-                    label=""
                     name="number"
                     type="text"
                     placeholder="Your contact number"
@@ -186,7 +197,6 @@ const PropertyPage = ({ data, location }) => (
                   />
                   <FormField
                     classes="textarea"
-                    label=""
                     name="message"
                     type="textarea"
                     placeholder="Hi! I am interested in the property because..."
@@ -194,11 +204,20 @@ const PropertyPage = ({ data, location }) => (
                     length="200"
                     required={true}
                   />
+                  <FormField
+                    name="agent-name"
+                    type="text"
+                    placeholder="Enter agent name"
+                    autocomplete="on"
+                  />
                   <div data-netlify-recaptcha={true} />
                 </form>
               </div>
-              <footer className="card-footer">
-                <p className="card-footer-item">
+              <footer
+                className="card-footer"
+                onClick={()=>document.getElementById('contact').submit()}
+              >
+                <p className="card-footer-item" form="contact">
                   <span>
                     Send message
                   </span>
