@@ -50,7 +50,7 @@ exports.createPages = ({ graphql, actions }) => {
   ])
 }
 
-exports.onCreateNode = async ({ node, getNode, actions, store, cache }) => {
+exports.onCreateNode = async ({ node, actions, store, cache }) => {
   const { createNode, createNodeField } = actions
 
   if (

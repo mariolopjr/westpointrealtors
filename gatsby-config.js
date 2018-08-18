@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'West Point Real Estate',
     siteUrl: 'https://westpointrealtors.com',
-    admin: 'https://api.westpointrealtors.com/admin',
+    admin: 'https://app.contentful.com/',
     google_maps_api_key: process.env.GMAP_KEY,
     subtitle: 'A Real Estate Brokerage',
     email: 'westpointagents@gmail.com',
