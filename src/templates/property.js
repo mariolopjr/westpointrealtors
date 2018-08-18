@@ -218,7 +218,7 @@ const PropertyPage = ({ data, location }) => (
             </header>
             <div className="card-content">
               <div className="content">
-                {data.contentfulProperties.description}
+                {data.contentfulProperties.description.description}
               </div>
             </div>
           </div>
@@ -233,11 +233,16 @@ export const pageQuery = graphql`
     contentfulProperties(fields: { slug: { eq: $path } }) {
       title
       photos {
-        resolutions(
-          width: 318
-        ) {
-          ...GatsbyContentfulResolutions_withWebp
-          ...GatsbyContentfulFluid_tracedSVG
+        localFile {
+          id
+          childImageSharp {
+            fluid(
+              maxWidth: 318,
+              quality: 70
+            ) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
+          }
         }
       }
       price
@@ -248,7 +253,9 @@ export const pageQuery = graphql`
         name
       }
       address
-      description
+      description {
+        description
+      }
       bedrooms
       bathrooms
       garages
@@ -256,9 +263,9 @@ export const pageQuery = graphql`
       lotSize
       hoaFees
       year(formatString: "YYYY")
-      #fields {
-      #  seoDescription
-      #}
+      fields {
+       seoDescription
+      }
     }
     site {
       siteMetadata {

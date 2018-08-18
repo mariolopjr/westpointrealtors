@@ -54,6 +54,7 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-sri',
     'gatsby-plugin-offline',
   ],
 }

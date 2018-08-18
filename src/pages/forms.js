@@ -24,11 +24,11 @@ const FormsPage = ({ data }) => (
       </div>
       <div className="column is-two-thirds">
         <Accordion>
-          {data.allStrapiCategory.edges.map(document => (
+          {data.allContentfulCategory.edges.map(document => (
               <FileCategory
                 key={document.node.id}
                 name={document.node.name}
-                files={data.allStrapiForm.edges.filter(file => ( file.node.category.name === document.node.name ))}
+                files={data.allContentfulForms.edges.filter(file => ( file.node.category.name === document.node.name ))}
               />
             ))}
         </Accordion>
@@ -61,8 +61,11 @@ export const pageQuery = graphql`
           id
           name
           file {
-            contentType
-            url
+            localFile {
+              id
+              ext
+              publicURL
+            }
           }
           category {
             name

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
 
 const File = ({ name, type, url }) => (
   <>
@@ -7,8 +6,9 @@ const File = ({ name, type, url }) => (
       <div className="tags has-addons">
         <span className="tag is-dark">{type.substring(1)}</span>
         <a
-          to={url}
+          href={url}
           className="tag is-info"
+          rel="noopener noreferrer"
           target="_blank"
         >
           {name}

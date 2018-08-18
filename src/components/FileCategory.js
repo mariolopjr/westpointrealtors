@@ -18,8 +18,8 @@ const FileCategory = ({ name, files }) => (
           <File
             key={document.node.id}
             name={document.node.name}
-            type={document.node.file.ext}
-            url={document.node.file.publicURL}
+            type={document.node.file.localFile.ext}
+            url={document.node.file.localFile.publicURL}
           />
         ))}
       </div>

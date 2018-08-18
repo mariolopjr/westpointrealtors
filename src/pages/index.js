@@ -18,10 +18,10 @@ const IndexPage = ({ data }) => (
             {data.allContentfulProperties.edges.length > 0 ?
               data.allContentfulProperties.edges.map(document => (
                 <HouseCard
-                  key={document.node.sys.id}
+                  key={document.node.id}
                   url={document.node.fields.slug}
                   title={document.node.title}
-                  cover={document.node.photos[0].resolutions}
+                  cover={document.node.photos[0].localFile}
                   price={document.node.price}
                   status={document.node.status.name}
                   address={document.node.address}
@@ -48,7 +48,7 @@ const IndexPage = ({ data }) => (
                 <Affiliate
                   key={document.node.id}
                   name={document.node.name}
-                  url={document.node.logo} />
+                  url={document.node.logo.localFile} />
               )) : (
                 <div className="no-properties-index is-uppercase">
                   <h1>No affiliates available</h1>
@@ -62,7 +62,7 @@ const IndexPage = ({ data }) => (
 )
 
 export const pageQuery = graphql`
-  query IndexQuery {
+  query {
     allContentfulProperties(
       filter: {
         favorite: {
@@ -75,11 +75,15 @@ export const pageQuery = graphql`
           id
           title
           photos {
-            resolutions(
-              width: 318
-            ) {
-              ...GatsbyContentfulResolutions_withWebp
-              ...GatsbyContentfulFluid_tracedSVG
+            localFile {
+              childImageSharp {
+                fluid(
+                  maxWidth: 318,
+                  quality: 70
+                ) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
             }
           }
           price
@@ -102,11 +106,15 @@ export const pageQuery = graphql`
           id
           name
           logo {
-            resolutions(
-              width: 200
-            ) {
-              ...GatsbyContentfulResolutions_withWebp
-              ...GatsbyContentfulFluid_tracedSVG
+            localFile {
+              childImageSharp {
+                fluid(
+                  maxWidth: 318,
+                  quality: 70
+                ) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                }
+              }
             }
           }
         }
