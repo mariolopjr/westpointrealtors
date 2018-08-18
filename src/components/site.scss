@@ -462,6 +462,7 @@ $outside-circle-margin: ($outside-circle-size / 2) * -1;
 
   .contact-us-bold {
     font-weight: 400;
+    margin-right: 0.3rem;
   }
 
   .contact-us-light {
@@ -489,9 +490,18 @@ $outside-circle-margin: ($outside-circle-size / 2) * -1;
     background-color: darken(#00d1b2, 3%);
     border-top: 0;
 
-    &:active,
-    &:focus,
-    &:hover {
+    button {
+      background-color: darken(#00d1b2, 3%);
+      border-top: 0;
+      font-family: "Raleway", sans-serif;
+      font-size: 1.3rem;
+      font-weight: 200;
+      letter-spacing: 1.2px;
+    }
+
+    &:active button,
+    &:focus button ,
+    &:hover button {
       background-color: darken(#00d1b2, 5%);
       cursor: pointer;
     }

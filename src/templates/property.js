@@ -161,9 +161,12 @@ const PropertyPage = ({ data, location }) => (
                 </p>
                 <form
                   id="contact"
+                  action="/success"
                   name="contact"
                   method="POST"
-                  netlify="true"
+                  netlify-honeypot="agent-name"
+                  netlify-recaptcha={true}
+                  netlify={true}
                 >
                   <FormField
                     name="address"
@@ -210,15 +213,18 @@ const PropertyPage = ({ data, location }) => (
                   <div data-netlify-recaptcha={true} />
                 </form>
               </div>
-              <footer
-                className="card-footer"
-                onClick={()=>document.getElementById('contact').submit()}
-              >
-                <p className="card-footer-item" form="contact">
-                  <span>
-                    Send message
-                  </span>
-                </p>
+              <footer className="card-footer">
+                <button
+                  className="card-footer-item"
+                  form="contact"
+                  type="submit"
+                >
+                  <p>
+                    <span className="is-uppercase">
+                      Send message
+                    </span>
+                  </p>
+                </button>
               </footer>
             </div>
           </div>
