@@ -161,11 +161,8 @@ const PropertyPage = ({ data, location }) => (
                 </p>
                 <form
                   id="contact"
-                  action="/success"
                   name="contact"
                   method="POST"
-                  netlify-honeypot="agent-name"
-                  netlify-recaptcha="true"
                   netlify="true"
                 >
                   <FormField
