@@ -29,6 +29,7 @@
     "react-accessible-accordion": "^2.4.4",
     "react-dom": "^16.4.2",
     "react-google-maps": "^9.4.5",
+    "react-google-recaptcha": "^1.0.2",
     "react-helmet": "^5.2.0",
     "react-places-autocomplete": "^7.2.0",
     "sharp": "^0.20.5",
