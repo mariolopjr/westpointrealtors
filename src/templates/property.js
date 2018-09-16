@@ -164,9 +164,9 @@ const PropertyPage = ({ data, location }) => (
                   action="/success"
                   name="contact"
                   method="POST"
-                  netlify-honeypot="agent-name"
-                  netlify-recaptcha={true}
-                  netlify={true}
+                  data-netlify-honeypot="agent-name"
+                  data-netlify-recaptcha="true"
+                  data-netlify="true"
                 >
                   <FormField
                     name="address"
@@ -210,7 +210,7 @@ const PropertyPage = ({ data, location }) => (
                     placeholder="Enter agent name"
                     autocomplete="on"
                   />
-                  <div data-netlify-recaptcha={true} />
+                  <div data-netlify-recaptcha="true" />
                 </form>
               </div>
               <footer className="card-footer">
