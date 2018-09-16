@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Carousel from 'nuka-carousel'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Recaptcha from "react-google-recaptcha"
 
 import Layout from '../components/Layout'
 import FormField from '../components/FormField'
@@ -166,7 +165,6 @@ const PropertyPage = ({ data, location }) => (
                   name="contact"
                   method="POST"
                   data-netlify-honeypot="agent-name"
-                  data-netlify-recaptcha="true"
                   data-netlify="true"
                 >
                   <FormField
@@ -208,10 +206,7 @@ const PropertyPage = ({ data, location }) => (
                   <FormField
                     name="agent-name"
                   />
-                  <Recaptcha
-                    ref="recaptcha"
-                    sitekey={process.env.SITE_RECAPTCHA_KEY}
-                  />
+                  <div data-netlify-recaptcha></div>
                 </form>
               </div>
               <footer className="card-footer">
