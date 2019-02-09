@@ -36,7 +36,7 @@ const HouseCard = ({
 
           <div className="content has-text-centered">
             <span className="card-price">
-              ${Number(Math.round(price + 'e2') + 'e-2').toFixed(2)}
+              ${Number(Math.round(price + 'e2') + 'e-2').toLocaleString(undefined, { maximumFractionDigits: 2 })}
             </span>
             <br/>
           </div>

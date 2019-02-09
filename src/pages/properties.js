@@ -11,7 +11,7 @@ const PropertiesPage = ({ data }) => (
         (() => {
           if (data.allContentfulProperties.edges.length > 0)
             return (
-              <div className="columns">
+              <div className="columns is-multiline is-mobile">
               {data.allContentfulProperties.edges.map(document => (
                 <HouseCard
                   key={document.node.id}

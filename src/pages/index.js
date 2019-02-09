@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => (
             Our favorite properties
           </h2>
 
-          <div className="columns">
+          <div className="columns is-multiline is-mobile">
             {data.allContentfulProperties.edges.length > 0 ?
               data.allContentfulProperties.edges.map(document => (
                 <HouseCard
