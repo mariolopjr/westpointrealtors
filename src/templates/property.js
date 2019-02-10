@@ -45,6 +45,7 @@ export default class PropertyPage extends React.Component {
 
     let data = this.props.data
     let location = this.props.location
+    this.setState({ address: data.contentfulProperties.address })
 
     return (
       <Layout>
@@ -221,13 +222,6 @@ export default class PropertyPage extends React.Component {
                         name="form-name"
                         type="hidden"
                         value="contact"
-                      />
-                      <FormField
-                        name="address"
-                        type="hidden"
-                        required={true}
-                        value={data.contentfulProperties.address}
-                        onChange={this.handleChange}
                       />
                       <FormField
                         name="name"
