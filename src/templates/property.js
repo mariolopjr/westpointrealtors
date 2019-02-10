@@ -27,25 +27,25 @@ export default class PropertyPage extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    this.setState({ submitted: true })
     const form = e.target
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": form.getAttribute("name"),
-        ...this.state
+    this.setState({ address: form.elements["address"].value, submitted: true }, () => {
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": form.getAttribute("name"),
+          ...this.state
+        })
       })
+        .catch(error => alert(error))
+      form.reset()
     })
-      .catch(error => alert(error))
-    form.reset()
   }
 
   render() {
 
     let data = this.props.data
     let location = this.props.location
-    this.setState({ address: data.contentfulProperties.address })
 
     return (
       <Layout>
@@ -222,6 +222,11 @@ export default class PropertyPage extends React.Component {
                         name="form-name"
                         type="hidden"
                         value="contact"
+                      />
+                      <FormField
+                        name="address"
+                        type="hidden"
+                        value={data.contentfulProperties.address}
                       />
                       <FormField
                         name="name"
