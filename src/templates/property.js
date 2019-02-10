@@ -38,6 +38,7 @@ export default class PropertyPage extends React.Component {
       })
     })
       .catch(error => alert(error))
+    form.reset()
   }
 
   render() {
@@ -130,7 +131,7 @@ export default class PropertyPage extends React.Component {
                 <header className="card-header">
                   <div className="price">
                     <span className="card-price">
-                      ${Number(Math.round(data.contentfulProperties.price + 'e2') + 'e-2').toFixed(2)}
+                      ${Number(Math.round(data.contentfulProperties.price + 'e2') + 'e-2').toLocaleString(undefined, { maximumFractionDigits: 2 })}
                     </span>
                     <span className="is-pulled-right is-uppercase house-status">{data.contentfulProperties.status.name}</span>
                   </div>
@@ -226,6 +227,7 @@ export default class PropertyPage extends React.Component {
                         type="hidden"
                         required={true}
                         value={data.contentfulProperties.address}
+                        onChange={this.handleChange}
                       />
                       <FormField
                         name="name"
@@ -233,6 +235,7 @@ export default class PropertyPage extends React.Component {
                         placeholder="Your name"
                         autocomplete="on"
                         required={true}
+                        onChange={this.handleChange}
                       />
                       <FormField
                         name="email"
@@ -240,6 +243,7 @@ export default class PropertyPage extends React.Component {
                         placeholder="Your email"
                         autocomplete="on"
                         required={true}
+                        onChange={this.handleChange}
                       />
                       <FormField
                         name="number"
@@ -247,6 +251,7 @@ export default class PropertyPage extends React.Component {
                         placeholder="Your contact number"
                         autocomplete="on"
                         required={true}
+                        onChange={this.handleChange}
                       />
                       <FormField
                         classes="textarea"
@@ -256,6 +261,7 @@ export default class PropertyPage extends React.Component {
                         autocomplete="on"
                         length="200"
                         required={true}
+                        onChange={this.handleChange}
                       />
                       <FormField
                         name="agent-name"

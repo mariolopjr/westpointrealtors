@@ -9,6 +9,7 @@ const FormInput = ({
   length,
   required,
   value,
+  onChange,
 }) => (
   <input
     className={ classes ? classes : 'input' }
@@ -19,6 +20,7 @@ const FormInput = ({
     maxLength={length}
     required={required}
     value={value}
+    onChange={onChange}
   />
 )
 

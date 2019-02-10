@@ -12,6 +12,7 @@ const FormField = ({
   length,
   required,
   value,
+  onChange,
 }) => (
   <div className="field">
     { label &&
@@ -26,6 +27,7 @@ const FormField = ({
         length={length}
         required={required}
         value={value}
+        onChange={onChange}
       />
     </div>
   </div>
