@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import FormInput from './FormInput'
+import FormInput from "./FormInput"
 
 const FormField = ({
   classes,
@@ -15,8 +15,7 @@ const FormField = ({
   onChange,
 }) => (
   <div className="field">
-    { label &&
-    <label className="label">{label}</label>}
+    {label && <label className="label">{label}</label>}
     <div className="control">
       <FormInput
         classes={classes}

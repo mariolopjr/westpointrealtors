@@ -1,22 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import React from "react"
+import PropTypes from "prop-types"
+import Helmet from "react-helmet"
+import { StaticQuery, graphql } from "gatsby"
+import { library } from "@fortawesome/fontawesome-svg-core"
 import {
   faBed,
   faShower,
   faCar,
   faImages,
   faMapMarkedAlt,
-} from '@fortawesome/pro-light-svg-icons'
+} from "@fortawesome/pro-light-svg-icons"
 
-import NavBar from './NavBar'
-import Footer from './Footer'
+import NavBar from "./NavBar"
+import Footer from "./Footer"
 
-import 'typeface-raleway'
-import 'bulma'
-import './site.scss'
+import "typeface-raleway"
+import "bulma"
+import "./site.scss"
 
 library.add(faBed, faShower, faCar, faImages, faMapMarkedAlt)
 
@@ -44,8 +44,8 @@ const Layout = ({ children, data }) => (
         <Helmet
           title={data.site.siteMetadata.title}
           meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
+            { name: "description", content: "Sample" },
+            { name: "keywords", content: "sample, something" },
           ]}
         />
         <NavBar siteTitle={data.site.siteMetadata.title} />

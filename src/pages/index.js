@@ -1,21 +1,19 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from "react"
+import { graphql } from "gatsby"
 
-import Layout from '../components/Layout'
-import Affiliate from '../components/Affiliate'
-import HouseCard from '../components/HouseCard'
+import Layout from "../components/Layout"
+import Affiliate from "../components/Affiliate"
+import HouseCard from "../components/HouseCard"
 
 const IndexPage = ({ data }) => (
   <Layout>
     <section className="hero is-small">
       <div className="hero-body index-hero">
         <div className="container has-text-centered">
-          <h2 className="title index-subtitle">
-            Our favorite properties
-          </h2>
+          <h2 className="title index-subtitle">Our favorite properties</h2>
 
           <div className="columns is-multiline is-mobile">
-            {data.allContentfulProperties.edges.length > 0 ?
+            {data.allContentfulProperties.edges.length > 0 ? (
               data.allContentfulProperties.edges.map(document => (
                 <HouseCard
                   key={document.node.id}
@@ -29,7 +27,8 @@ const IndexPage = ({ data }) => (
                   bathrooms={document.node.bathrooms}
                   garages={document.node.garages}
                 />
-              )) : (
+              ))
+            ) : (
               <div className="no-properties-index is-uppercase">
                 <h1>No properties available</h1>
               </div>
@@ -43,16 +42,18 @@ const IndexPage = ({ data }) => (
         <div className="hero-body">
           <h2 className="title">Our affiliates</h2>
           <div className="columns affiliates">
-            {data.allContentfulAffiliates.edges.length > 0 ?
+            {data.allContentfulAffiliates.edges.length > 0 ? (
               data.allContentfulAffiliates.edges.map(document => (
                 <Affiliate
                   key={document.node.id}
                   name={document.node.name}
-                  url={document.node.logo.localFile} />
-              )) : (
-                <div className="no-properties-index is-uppercase">
-                  <h1>No affiliates available</h1>
-                </div>
+                  url={document.node.logo.localFile}
+                />
+              ))
+            ) : (
+              <div className="no-properties-index is-uppercase">
+                <h1>No affiliates available</h1>
+              </div>
             )}
           </div>
         </div>
@@ -63,13 +64,7 @@ const IndexPage = ({ data }) => (
 
 export const pageQuery = graphql`
   query {
-    allContentfulProperties(
-      filter: {
-        favorite: {
-          eq: true
-        }
-      }
-    ) {
+    allContentfulProperties(filter: { favorite: { eq: true } }) {
       edges {
         node {
           id
@@ -77,10 +72,7 @@ export const pageQuery = graphql`
           photos {
             localFile {
               childImageSharp {
-                fluid(
-                  maxWidth: 318,
-                  quality: 70
-                ) {
+                fluid(maxWidth: 318, quality: 70) {
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
@@ -108,10 +100,7 @@ export const pageQuery = graphql`
           logo {
             localFile {
               childImageSharp {
-                fluid(
-                  maxWidth: 318,
-                  quality: 70
-                ) {
+                fluid(maxWidth: 318, quality: 70) {
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }

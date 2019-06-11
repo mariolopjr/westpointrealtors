@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from "react"
+import { Link } from "gatsby"
+import Img from "gatsby-image"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const HouseCard = ({
   url,
@@ -19,10 +19,7 @@ const HouseCard = ({
       <div className="card card-equal-height">
         <div className="card-image">
           <figure className="image is-3by2">
-            <Img
-              fluid={cover.childImageSharp.fluid}
-              alt="Main"
-            />
+            <Img fluid={cover.childImageSharp.fluid} alt="Main" />
           </figure>
         </div>
         <small className="has-text-right is-uppercase">{status}</small>
@@ -36,9 +33,13 @@ const HouseCard = ({
 
           <div className="content has-text-centered">
             <span className="card-price">
-              ${Number(Math.round(price + 'e2') + 'e-2').toLocaleString(undefined, { maximumFractionDigits: 2 })}
+              $
+              {Number(Math.round(price + "e2") + "e-2").toLocaleString(
+                undefined,
+                { maximumFractionDigits: 2 }
+              )}
             </span>
-            <br/>
+            <br />
           </div>
         </div>
         <footer className="card-footer">

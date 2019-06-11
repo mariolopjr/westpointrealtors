@@ -1,3 +1,0 @@
-[submodule "plugins/gatsby-source-strapi"]
-	path = plugins/gatsby-source-strapi
-	url = git@github.com:mariolopjr/gatsby-source-strapi.git

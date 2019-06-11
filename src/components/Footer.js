@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 const Footer = ({
   siteTitle,
@@ -24,16 +24,18 @@ const Footer = ({
         </div>
         <div className="column is-one-third is-offset-one-third disclaimer">
           <span>Disclaimer</span>
-          <hr/>
+          <hr />
           <span>Information herein deemed reliable but not guaranteed.</span>
         </div>
       </div>
     </div>
     <div className="lower-footer">
-        <div className="container">
-            <span className="is-uppercase">© {siteTitle}</span>
-            <a href={siteAdmin} className="is-pulled-right">Agent Login</a>
-        </div>
+      <div className="container">
+        <span className="is-uppercase">© {siteTitle}</span>
+        <a href={siteAdmin} className="is-pulled-right">
+          Agent Login
+        </a>
+      </div>
     </div>
   </footer>
 )

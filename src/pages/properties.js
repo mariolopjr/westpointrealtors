@@ -1,17 +1,16 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from "react"
+import { graphql } from "gatsby"
 
-import Layout from '../components/Layout'
-import HouseCard from '../components/HouseCard'
+import Layout from "../components/Layout"
+import HouseCard from "../components/HouseCard"
 
 const PropertiesPage = ({ data }) => (
   <Layout>
     <div className="container property-list">
-      {
-        (() => {
-          if (data.allContentfulProperties.edges.length > 0)
-            return (
-              <div className="columns is-multiline is-mobile">
+      {(() => {
+        if (data.allContentfulProperties.edges.length > 0)
+          return (
+            <div className="columns is-multiline is-mobile">
               {data.allContentfulProperties.edges.map(document => (
                 <HouseCard
                   key={document.node.id}
@@ -26,16 +25,15 @@ const PropertiesPage = ({ data }) => (
                   garages={document.node.garages}
                 />
               ))}
-              </div>
-            )
-          else
-            return (
-              <div className="no-properties-list is-uppercase has-text-centered">
-                <h1>No properties available</h1>
-              </div>
-            )
-        })()
-      }
+            </div>
+          )
+        else
+          return (
+            <div className="no-properties-list is-uppercase has-text-centered">
+              <h1>No properties available</h1>
+            </div>
+          )
+      })()}
     </div>
   </Layout>
 )
@@ -50,10 +48,7 @@ export const pageQuery = graphql`
           photos {
             localFile {
               childImageSharp {
-                fluid(
-                  maxWidth: 318,
-                  quality: 70
-                ) {
+                fluid(maxWidth: 318, quality: 70) {
                   ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
