@@ -62,7 +62,7 @@ module.exports = {
             "X-Content-Type-Options: nosniff",
           ],
           "/sw.js": [
-            "Cache-Control: no-cache",
+            "Cache-Control: public, max-age=0, must-revalidate",
           ],
           "/*.html": [
             "Cache-Control: public, max-age=0, must-revalidate",
