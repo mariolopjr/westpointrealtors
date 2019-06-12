@@ -1,5 +1,15 @@
 {
-  "extends": [
-    "config:base"
-  ]
-}
+    "extends": [
+      "config:base",
+      "group:all",
+      "schedule:weekends",
+      ":automergeMinor",
+      ":disableMajorUpdates",
+      ":maintainLockFilesWeekly",
+      ":rebaseStalePrs",
+      ":separateMajorReleases"
+    ],
+    "prHourlyLimit": 2,
+    "prConcurrentLimit": 20,
+    "rangeStrategy": "bump"
+  }
