@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 
 const FormInput = ({
   classes,
@@ -12,7 +12,7 @@ const FormInput = ({
   onChange,
 }) => (
   <input
-    className={ classes ? classes : 'input' }
+    className={classes ? classes : "input"}
     name={name}
     type={type}
     placeholder={placeholder}

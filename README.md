@@ -1,7 +1,9 @@
-# West Point Real Estate GatsbyJS Frontend
+# West Point Real Estate — [westpointrealtors.com](https://westpointrealtors.com)
 
-## Build image
-```docker build --build-arg FA_TOKEN --build-arg GMAP_KEY --build-arg CACHE_DATE="$(date)" -t registry.gitlab.com/tmwebdev/westpoint .```
 
-## Push image to registry
-```docker push registry.gitlab.com/tmwebdev/westpoint```
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e9cd7354-8673-4727-8a97-dfd7c395b384/deploy-status)](https://app.netlify.com/sites/westpointrealtors/deploys)
+
+
+## Powered by the following amazing technology
+ - [Netlify](https://www.netlify.com)
+ - [Gatsby v2](https://www.gatsbyjs.org)

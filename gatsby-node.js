@@ -50,27 +50,8 @@ exports.createPages = ({ graphql, actions }) => {
   ])
 }
 
-exports.onCreateNode = async ({ node, actions, store, cache }) => {
-  const { createNode, createNodeField } = actions
-
-  if (
-    node !== null
-    && node.internal !== null
-    && node.internal.type !== null
-    && node.internal.type === 'ContentfulAsset'
-  ) {
-    const fileNode = await createRemoteFileNode({
-      url: `https:${node.file.url}`,
-      store,
-      cache,
-      createNode,
-      createNodeId: id => `localFile-${node.id}`,
-    })
-
-    if (fileNode) {
-      node.localFile___NODE = fileNode.id
-    }
-  }
+exports.onCreateNode = async ({ node, actions }) => {
+  const { createNodeField } = actions
 
   if (
     node !== null
@@ -91,8 +72,8 @@ exports.onCreateNode = async ({ node, actions, store, cache }) => {
         `This home has ${node.photos___NODE.length}` +
         ' photos of this ' +
         `${Number(Math.round(node.price + 'e2') + 'e-2').toFixed(2)} ` +
-        `${node.bedrooms} bed, ${node.bathrooms} bath, ` +
-        `${node.home_size} sqft located at ` +
+        `${node.bedrooms ? node.bedrooms : 0} bed, ${node.bathrooms ? node.bathrooms : 0} bath, ` +
+        `${node.home_size ? node.home_size : 0} sqft located at ` +
         `${node.address} built in ${new Date(node.year).getUTCFullYear()}.`,
     })
   }

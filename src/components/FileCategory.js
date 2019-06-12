@@ -1,18 +1,21 @@
-import React from 'react'
+import React from "react"
 import {
   AccordionItem,
-  AccordionItemTitle,
-  AccordionItemBody,
-} from 'react-accessible-accordion'
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel,
+} from "react-accessible-accordion"
 
-import File from './File'
+import File from "./File"
 
 const FileCategory = ({ name, files }) => (
   <AccordionItem>
-    <AccordionItemTitle>
-      <h3>{name}</h3>
-    </AccordionItemTitle>
-    <AccordionItemBody>
+    <AccordionItemHeading>
+      <AccordionItemButton>
+        <h3>{name}</h3>
+      </AccordionItemButton>
+    </AccordionItemHeading>
+    <AccordionItemPanel>
       <div className="field is-grouped is-grouped-multiline">
         {files.map(document => (
           <File
@@ -23,7 +26,7 @@ const FileCategory = ({ name, files }) => (
           />
         ))}
       </div>
-    </AccordionItemBody>
+    </AccordionItemPanel>
   </AccordionItem>
 )
 
