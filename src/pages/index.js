@@ -1,11 +1,11 @@
 import React from "react"
 
-import Layout from "../components/layoutuc"
+import LayoutUC from "../components/layoutuc"
 
 const IndexPage = () => (
-  <Layout>
+  <LayoutUC>
     <p>Under Contruction</p>
-  </Layout>
+  </LayoutUC>
 )
 
 export default IndexPage
