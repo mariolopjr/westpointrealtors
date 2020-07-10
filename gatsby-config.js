@@ -2,8 +2,6 @@ module.exports = {
   siteMetadata: {
     title: 'West Point Real Estate',
     siteUrl: 'https://westpointrealtors.com',
-    admin: 'https://app.contentful.com/',
-    google_maps_api_key: process.env.GMAP_KEY,
     subtitle: 'A Real Estate Brokerage',
     email: 'westpointagents@gmail.com',
     address1: '8 Beverly Hills Boulevard',
@@ -13,25 +11,9 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `src`,
-        path: `${__dirname}/src/`,
-      },
-    },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sass`,
-    {
-      resolve: 'gatsby-source-contentful',
-      options: {
-        spaceId: process.env.SPACE_ID,
-        accessToken: process.env.ACCESS_TOKEN,
-        host: process.env.SPACE_HOST,
-        downloadLocal: true,
-      },
-    },
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-sitemap`,
     {
