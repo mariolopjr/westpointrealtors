@@ -1,6 +1,6 @@
 import React from "react"
 
-import LayoutUC from "../components/layoutuc"
+import LayoutUC from "../components/LayoutUC"
 
 const NotFoundPage = () => (
   <LayoutUC>
