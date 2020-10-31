@@ -29,7 +29,7 @@
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
     "sharp": "^0.26.2",
-    "slugify": "^1.4.5",
+    "slugify": "^1.4.6",
     "typeface-raleway": "^0.0.75",
     "typography": "^0.16.19"
   },
