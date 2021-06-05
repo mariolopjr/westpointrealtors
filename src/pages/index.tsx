@@ -42,6 +42,7 @@ const IndexPage = () => (
             fax
             email
             gmaps
+            hud
           }
         }
       }
@@ -50,13 +51,17 @@ const IndexPage = () => (
       <Layout>
         <Container>
           <Title title={data.site.siteMetadata.slogan} />
-          <PhoneButton type="office" phone={data.site.siteMetadata.phone} />
+          <PhoneButton type="office" phone={data.site.siteMetadata.fax} />
           <PhoneButton type="fax" phone={data.site.siteMetadata.fax} />
           <EmailButton text="Email us" email={data.site.siteMetadata.email} />
           <Button
             text="Visit us"
             url={data.site.siteMetadata.gmaps}
             title="Visit us" />
+          <Button
+            text="HudHomeStore"
+            url={data.site.siteMetadata.hud}
+            title="Click to go to Hud Home Store" />
         </Container>
       </Layout>
     )}

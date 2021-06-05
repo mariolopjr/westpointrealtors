@@ -8,6 +8,7 @@ module.exports = {
     fax: '800-418-4261',
     email: 'westpointagents@gmail.com',
     gmaps: 'https://www.google.com/maps/place/8+Beverly+Hills+Blvd,+Beverly+Hills,+FL+34465/@28.9267832,-82.4614496,17z/',
+    hud: 'https://www.hudhomestore.com',
   },
   plugins: [
     {
