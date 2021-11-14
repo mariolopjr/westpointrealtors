@@ -6,7 +6,7 @@
   "dependencies": {
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/core": "^11.0.0",
-    "@emotion/styled": "^11.3.0",
+    "@emotion/styled": "^11.6.0",
     "babel-preset-gatsby": "^1.14.0",
     "gatsby": "^3.14.5",
     "gatsby-link": "^3.14.0",
